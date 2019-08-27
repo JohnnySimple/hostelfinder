@@ -1,0 +1,190 @@
+{% extends "dashboard_layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div align="center" style="margin-top: 70px; width: 100%;">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    </div>    
+</div>
+<div class="container post-cont" style="margin-top: 20px;">
+	<div class="col-md-5 tip-me" style="">
+			<h3 class="wow fadeInUp" data-wow-delay="300ms" style="color:yellow;">Please don't forget to tip the developer</h3>
+			<div class="wow fadeInUp" data-wow-delay="300ms">
+				<p>Momo Number(mtn): </p><span>0543573800</span>
+				<p>Momo Name: </p><span>Obeng Johnson</span>
+			</div>
+	</div>
+	<div class="col-md-2"></div>
+	<div class="col-md-5 make-a-post">
+		<h1><small>Make your post</small></h1>
+		<form class="form-group" method="POST" action="/upload" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+			<label>school</label>
+			<div class="form-group">
+				{% if form.school.errors %}
+					{{ form.school(class="form-control form-control-lg is-invalid", placeholder="school eg.KNUST") }}
+						<div class="invalid-feedback">
+							{% for error in form.school.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+				{% else %}
+						{{ form.school(class="form-control form-control-lg", placeholder="school eg.KNUST") }}
+				{% endif %}
+			</div>
+			<!-- <div class="form-group">
+				<select class="form-control">
+					<option>--select school--</option>
+					<option>KNUST</option>
+					<option>LEGON</option>
+					<option>UCC</option>
+					<option>UEW</option>
+					<option>UPS</option>
+					<option>UDS</option>
+					<option>ASHESI</option>
+				</select>
+			</div> -->
+			<div class="form-group">
+				{% if form.hostel.errors %}
+					{{ form.hostel(class="form-control form-control-lg is-invalid", placeholder="hostel") }}
+						<div class="invalid-feedback">
+							{% for error in form.hostel.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+				{% else %}
+						{{ form.hostel(class="form-control form-control-lg", placeholder="hostel") }}
+				{% endif %}
+			</div>
+			<div class="form-group">
+				{% if form.location.errors %}
+					{{ form.location(class="form-control form-control-lg is-invalid", placeholder="location") }}
+						<div class="invalid-feedback">
+							{% for error in form.location.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+				{% else %}
+						{{ form.location(class="form-control form-control-lg", placeholder="location") }}
+				{% endif %}
+			</div>
+			<label>Rating</label>
+			<div class="form-group">
+				{% if form.rating.errors %}
+					{{ form.rating(class="form-control form-control-lg is-invalid", placeholder="star-rating: 1 - 5") }}
+						<div class="invalid-feedback">
+							{% for error in form.rating.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+				{% else %}
+						{{ form.rating(class="form-control form-control-lg", placeholder="star-rating: 1 - 5") }}
+				{% endif %}
+			</div>
+			<!-- <div class="form-group">
+				<select class="form-control">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+			</div> -->
+			<div class="form-group">
+				{% if form.phone.errors %}
+					{{ form.phone(class="form-control form-control-lg is-invalid", placeholder="phone") }}
+						<div class="invalid-feedback">
+							{% for error in form.phone.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+				{% else %}
+						{{ form.phone(class="form-control form-control-lg", placeholder="phone") }}
+				{% endif %}
+			</div>
+			<label>Room type</label>
+			<div class="form-group">
+				{% if form.room_type.errors %}
+					{{ form.room_type(class="form-control form-control-lg is-invalid", placeholder="room_type: 1 - 4") }}
+						<div class="invalid-feedback">
+							{% for error in form.room_type.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+				{% else %}
+						{{ form.room_type(class="form-control form-control-lg", placeholder="room_type: 1 - 4") }}
+				{% endif %}
+			</div>
+			<!-- <div class="form-group">
+				<select class="form-control">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+				</select>
+			</div> -->
+			<div class="form-group">
+				{% if form.price.errors %}
+					{{ form.price(class="form-control form-control-lg is-invalid", placeholder="price") }}
+						<div class="invalid-feedback">
+							{% for error in form.price.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+				{% else %}
+						{{ form.price(class="form-control form-control-lg", placeholder="price") }}
+				{% endif %}
+			</div>
+			<!-- <div class="form-group">
+				<input type="tel" name="phone" pattern="[0-9]{10}" class="form-control" placeholder="" required>
+			</div> -->
+			<div class="custom-file">
+				<input type="file" name="file" class="custom-file-input course-mat" required="">
+			</div>
+				
+			<div class="form-group" style="margin-top: 20px;">
+			  	{{ form.submit(class="btn btn-success") }}
+			</div>
+		</form>
+	</div>
+
+	
+</div>
+<div class="container" style="margin-bottom: 30px;">
+	<div class="delete-post-table" align="center">
+		<h2>Delete Post</h2>
+		<table class="table">
+		<tr>
+			<th>School</th>
+			<th>Hostel</th>
+			<th>Room Type</th>
+			<th>Delete</th>
+		</tr>
+		{% for a in myposts %}
+			{% if a.userId == current_user.id %}
+				<tr>
+					<td>{{ a.school }}</td>
+					<td>{{ a.hostel }}</td>
+					<td>{{ a.roomType }}</td>
+					<td>
+						<form method="POST" action="/delete_post/{{ a.id }}">
+							<button class="btn btn-danger">x</button>
+						</form>
+					</td>
+				</tr>
+			{% endif %}
+		{% endfor %}	
+		</table>
+		
+	</div>
+</div>
+
+{% endblock content %}

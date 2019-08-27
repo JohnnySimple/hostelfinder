@@ -1,0 +1,131 @@
+body{
+}
+.index-cont1{
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+					url("/static/img/18.jpg");
+		height: 800px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center center;
+		z-index: -1;
+		margin-bottom: 50px;
+	}
+.index-cont1-text{
+	margin-top: 250px;
+	color: #fff;
+}
+.index-cont1-text h1{
+	font-size: 50px;
+}
+.buts{
+	margin-top: 50px;
+}
+.post{
+	height: 370px;
+	background-color: #fff;
+	box-shadow: 0 0 5px #000;
+	margin-bottom: 70px;
+}
+.post:hover{
+	
+}
+.post .post-img{
+	width: 100%;
+	height: 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.post .post-text{
+	height: 50%;
+	margin: 0px 0px 0px 10px;
+}
+.post .post-text li{
+	list-style-type: none;
+	margin: 0px 20px 5px 10px;
+	float: left;
+}
+.post .post-text li span{
+	font-size: 5px;
+}
+.post figure {
+    overflow: hidden; }
+
+.post figure img {
+      transition: all 300ms linear 0s; }
+
+.post:hover img {
+    -webkit-transform: scale(1.3) rotate(-10deg);
+    -moz-transform: scale(1.3) rotate(-10deg);
+    -ms-transform: scale(1.3) rotate(-10deg);
+    -o-transform: scale(1.3) rotate(-10deg);
+    transform: scale(1.3) rotate(-10deg); 
+}
+
+.post-cont{
+	margin-bottom: 100px;
+}
+.form-side{
+	background-color: #000;
+	opacity: 0.3;
+}
+#main-contact-form .form-control{
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid #4d507d;
+	margin-top: 30px;
+	background-color: transparent;
+	color: #fff;
+}
+
+#main-contact-form .form-control:hover{
+	box-shadow: none;
+}
+.form-btn{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 20px;
+}
+.contact-info{
+	color: #fff;
+	padding-left: 100px;
+}
+.single-contact-info{
+	margin-bottom: 25px;
+}
+footer{
+	height: 550px;
+	background-color: #111343;
+}
+@media only screen and (max-width: 600px){
+	footer{
+		height: 900px;
+	}
+	.contact-info{
+		padding-left: 10px;
+		margin-bottom: 30px;
+	}
+	#main-contact-info h4{
+		font-size: 15px;
+	}
+	.form-side{
+		width: 70%;
+		margin-left: 40px;
+	}
+}
+.tip-me{
+	margin-top: 100px;
+	height: 300px;
+	box-shadow: 0 0 5px #ccc;
+	padding: 20px;
+	background-color: #111343;
+	color: #fff;
+}
+.tip-me p{
+	font-size: 20px;
+}
+.tip-me span{
+	font-size: 15px;
+}

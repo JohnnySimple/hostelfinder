@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div align="center" style="margin-top: 50px; width: 100%;">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+    </div>    
+</div>
+<div class="container" style="margin-top: 100px;margin-bottom: 100px;">
+	<div class="col-md-5 login-form">
+		<h1><small>Login</small></h1>
+
+		<form class="form" method="POST" action="">
+			{{ loginform.hidden_tag() }}
+			<div class="form-group">
+				{% if loginform.email.errors %}
+				    {{ loginform.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+						<div class="invalid-feedback">
+							{% for error in loginform.email.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ loginform.email(class="form-control form-control-lg", placeholder="Email") }}
+					{% endif %}
+			</div>
+			<div class="form-group">
+				{% if loginform.password.errors %}
+				    {{ loginform.password(class="form-control form-control-lg is-invalid", placeholder="Password") }}
+						<div class="invalid-feedback">
+							{% for error in loginform.password.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ loginform.password(class="form-control form-control-lg", placeholder="Password") }}
+					{% endif %}
+			</div>
+			<div class="form-group">
+				{{ loginform.submit(class="btn btn-success") }}
+			</div>
+		</form>
+		<p>Don't have an account? <a href="{{ url_for('signUp') }}">Signup</a></p>
+	</div>
+</div>
+
+{% endblock content %}

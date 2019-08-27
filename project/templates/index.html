@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style type="text/css">
+
+</style>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<div class="container-fluid index-cont1">
+	<div class="index-cont1-text wow fadeInUp" data-wow-delay="300ms" align="center">
+		<h1>Easily advertise your available room</h1>
+		<p>Sign up only if you want to post.</p>
+	</div>
+	<div class="buts wow fadeInUp" data-wow-delay="300ms" align="center">
+		<a href="{{ url_for('signUp') }}"><button class="btn btn-success">Sign up</button></a>
+		<a href="{{ url_for('login') }}"><button class="btn btn-primary">Login</button></a>
+	</div>
+</div>
+
+<div class="container post-cont">
+	<div class="row">
+		<div align="center">
+			<h3 >Available rooms</h3>
+		</div>
+		<hr style="margin-bottom: 50px;">
+		{% if rooms == [] %}
+			<h2>No posts have been made yet.</h2>
+		{% else %}
+			{% for post in rooms %}
+				<!-- single post -->
+				<div class="col-md-3 col-sm-6">
+					<div class="post fadeIn" data-wow-delay="300ms">
+						<div class="post-img" style="background-image: url('/static/post_imgs/{{ post.imageName  }}');background-size: cover;background-repeat: no-repeat;background-position: center center;">
+							<figure>
+								<!-- <img class="img-fluid img-responsive" src="/static/post_imgs/{{ post.imageName }}" width="100%"> -->
+							</figure>
+						</div>
+						<div class="post-text" align="center">
+							<h4>{{ post.school }}</h4>
+							<h5>{{ post.hostel }}</h5>
+							<small>
+								
+							</small>
+							<li><span class="fas fa-map-marker"></span> &nbsp {{ post.location }}</li>
+							<li><span class="fas fa-user"></span> &nbsp {{ post.roomType }} in a room</li>
+							<li>Ghs {{ post.price }}</li>
+							<li><span class="fas fa-phone"></span> {{ post.phone }}</li>
+							<li>
+							{% for a in range(1, post.rating+1) %}
+								<span class="fas fa-star" style="color: orange;"></span>
+							{% endfor %}
+							{% if post.rating != 5 %}
+								{% for b in range(1, 6-post.rating) %}
+									<span class="fas fa-star"></span>
+								{% endfor %}
+							{% endif %}
+							</li>
+						</div>
+					</div>
+				</div>
+				<!-- end of single post -->
+			{% endfor %}
+		{% endif %}
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title %}
+		<title>{{ title }}</title>
+	{% else %}
+		<title>Page</title>
+	{% endif %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet"  href="static/css/bootstrap.min.css">
+<script type="text/javascript" src="static/js/jquery1.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/style.css">
+<link rel="stylesheet" type="text/css" href="static/css/animate.css">
+<link rel="stylesheet" type="text/css" href="static/css/all.css">
+<link rel="stylesheet" type="text/css" href="static/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="static/css/brands.css">
+<link rel="stylesheet" type="text/css" href="static/css/solid.css">
+
+<script type="text/javascript" src="static/js/brands.js"></script>
+<script type="text/javascript" src="static/js/solid.js"></script>
+<script type="text/javascript" src="static/js/fontawesome.js"></script>
+</head>
+
+<style type="text/css">
+	
+</style>
+
+<body data-spy="scroll" data-target=".navbar-collapse">
+<!--beginning of the nav bar-->
+	<div class="navbar navbar-fixed-top navbar-default"> 
+    	<div class="container cont1">
+    		<div class="navbar-header ">
+    			<a href="{{ url_for('index') }}" class="navbar-brand">HostelFinder</a>
+    			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+    			<span class="sr-only">Toggle navigation</span>
+
+    			<span class="icon-bar icon"></span>
+    			<span class="icon-bar icon"></span>
+    			<span class="icon-bar icon"></span>
+
+    		</button>
+              
+    		</div>
+
+    		<div  class="collapse navbar-collapse ">
+    			
+            <div  class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url_for('index')}}"><span class="fa fa-home"></span> HOME</a></li>
+                    <li><a href="{{ url_for('signUp') }}">SignUp</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                </ul>
+    		</div>
+    			
+    	</div>
+    </div>
+    </div> <!--end of the nav bar-->
+
+<div>
+	{% block content %}
+	{% endblock %}
+</div>
+
+<div>
+    <footer class="wow fadeInUp" data-wow-delay="300ms">
+        <div align="center" style="color: #fff; padding-top: 60px;">
+            <h2 style="margin-bottom: 70px;">CONTACT ME</h2>
+        </div>
+        <div class="col-md-5 contact-info">
+            <div class="single-contact-info wow fadeInUp">
+                <p>Address:</p>
+                <h4>St.Peter's SHS <br>Box 17, Nkwatia<br>Ghana</h4>
+            </div>
+            <div class="single-contact-info wow fadeInUp">
+                <p>Phone:</p>
+                <h4>(+233) 543573800</h4>
+            </div>
+            <div class="single-contact-info wow fadeInUp">
+                <p>Email:</p>
+                <h4>obengboatengjohnson@gmail.com</h4>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12 form-side wow fadeInUp">
+            <div class="contact-form">
+                <form method="POST" action="/send_mail" id="main-contact-form">
+                    <!-- <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="fname" class="form-control" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="lname" class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="phone" class="form-control" placeholder="Number">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea rows="2" class="form-control" placeholder="Message"></textarea>
+                        </div>
+                    </div> -->
+                    <!-- Button -->
+                    <!-- <div class="col-12">
+                        <button type="submit" class="btn form-btn">Send Message <i class="fas fa-arrow-right"></i></button>
+                    </div> -->
+
+                    {{ form.hidden_tag() }}
+            <div class="form-group">
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Your name") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg", placeholder="Your name") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Email") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg", placeholder="Email") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.message.errors %}
+                    {{ form.message(class="form-control form-control-lg is-invalid", placeholder="Message") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.message.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.message( rows="4", class="form-control form-control-lg", placeholder="Message") }}
+                {% endif %}
+            </div>
+            <div class="form-group" style="margin-top: 20px;" align="right">
+                {{ form.submit(class="btn btn-success") }}
+            </div>
+
+                </form>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/wow.min.js"></script>
+<script type="text/javascript">
+    new WOW().init();
+</script>
+</body>
+</html>
