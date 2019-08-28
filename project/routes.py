@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from flask_login import login_user, current_user, logout_user
 from flask_mail import Message
 
-UPLOAD_FOLDER = '/project/static/post_imgs'
+UPLOAD_FOLDER = 'findahostel/project/static/post_imgs'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 
