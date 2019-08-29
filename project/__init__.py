@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
 # creating database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hostelfinder.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
